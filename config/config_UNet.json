@@ -1,5 +1,5 @@
 {
-    "name": "HumanSeg",
+    "name": "AvatarSeg",
     "n_gpu": 1,
     
     "arch": {
@@ -74,7 +74,7 @@
 
 	"trainer": {
 		"epochs": 80,
-		"save_dir": "/workspace/checkpoints/",
+		"save_dir": "pretrained/",
 		"save_freq": null,
 		"verbosity": 2,
 		"monitor": "valid_loss",
@@ -83,6 +83,6 @@
 
 	"visualization":{
 		"tensorboardX": true,
-		"log_dir": "/workspace/checkpoints/"
+		"log_dir": "pretrained/"
 	}
 }
