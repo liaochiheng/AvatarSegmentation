@@ -3,6 +3,7 @@
 modnet/
 pretrained/
 models/pytorch-image-models/
+dataset/xiaoyongshen/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
