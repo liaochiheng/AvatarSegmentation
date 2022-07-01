@@ -1,5 +1,7 @@
 # mine
 .DS_Store
+modnet/
+pretrained/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
