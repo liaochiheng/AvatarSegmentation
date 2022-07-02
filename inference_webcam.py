@@ -27,7 +27,7 @@ args = parser.parse_args()
 #	Main execution
 #------------------------------------------------------------------------------
 # Build model
-model = UNet(backbone="resnet18", num_classes=2)
+model = UNet()
 trained_dict = torch.load(args.checkpoint, map_location="cpu")['state_dict']
 model.load_state_dict(trained_dict, strict=False)
 if args.use_cuda:
