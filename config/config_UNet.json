@@ -73,7 +73,7 @@
 	},
 
 	"trainer": {
-		"epochs": 80,
+		"epochs": 160,
 		"save_dir": "pretrained/",
 		"save_freq": 20,
 		"verbosity": 2,
