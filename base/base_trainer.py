@@ -171,7 +171,7 @@ class BaseTrainer:
 		# Save the best checkpoint
 		if save_best:
 			best_path = os.path.join(self.checkpoint_dir, 'model_best.pth')
-			torch.save(state, best_path)
+			torch.save(state['state_dict'], best_path)
 			self.logger.info("Saving current best at {}".format(best_path))
 		else:
 			self.logger.info("Monitor is not improved from %f" % (self.monitor_best))

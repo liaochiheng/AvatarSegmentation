@@ -10,6 +10,9 @@ from models import UNet
 from dataloaders import transforms
 from utils import utils
 
+model_path = "pretrained/model_best_0704.pth"
+test_image = "modnet/avatar-seg-0704/images/648_3_00015.jpg"
+bg_path = "output/bg.jpg"
 
 #------------------------------------------------------------------------------
 #   Argument parsing
@@ -19,7 +22,7 @@ parser = argparse.ArgumentParser(description="Arguments for the script")
 parser.add_argument('--use_cuda', action='store_true', default=False,
                     help='Use GPU acceleration')
 
-parser.add_argument('--bg', type=str, default=None,
+parser.add_argument('--bg', type=str, default=bg_path,
                     help='Path to the background image file')
 
 parser.add_argument('--watch', action='store_true', default=False,
@@ -28,10 +31,10 @@ parser.add_argument('--watch', action='store_true', default=False,
 parser.add_argument('--input_sz', type=int, default=320,
                     help='Input size')
 
-parser.add_argument('--checkpoint', type=str, default="pretrained/model_best.pth",
+parser.add_argument('--checkpoint', type=str, default=model_path,
                     help='Path to the trained model file')
 
-parser.add_argument('--input', type=str, default="modnet/avatar-seg/images/648_3_00116.jpg",
+parser.add_argument('--input', type=str, default=test_image,
                     help='Path to the input image')
 # parser.add_argument('--video', type=str, default="/media/antiaegis/storing/FORGERY/segmentation/videos/Directions.54138969.mp4",
 #                     help='Path to the input video')
@@ -144,7 +147,7 @@ print("read: %.3f [s]; preproc: %.3f [s]; pred: %.3f [s]; draw: %.3f [s]; total:
 
 print('===> image.shape = ', image.shape, 'mask.shape = ', mask.shape, 'matting.shape = ', image_alpha.shape)
 # print('==========>mask.value:', mask.dtype, np.min(mask), np.max(mask), np.nonzero((mask > 0.1) & (mask < np.max(mask))))
-cv2.imwrite('infer-image.jpg', image[...,::-1])
-cv2.imwrite('infer-mask.png', np.uint8(mask*255))
-cv2.imwrite('infer-mat.png', image_alpha[...,::-1])
+cv2.imwrite('output/infer-image.jpg', image[...,::-1])
+cv2.imwrite('output/infer-mask.png', np.uint8(mask*255))
+cv2.imwrite('output/infer-mat.png', image_alpha[...,::-1])
 
